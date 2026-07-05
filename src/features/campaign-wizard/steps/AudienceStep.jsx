@@ -55,8 +55,8 @@ export default function AudienceStep({ onValidChange }) {
           onToggle={() => setOpenSection(openSection === 'linkedin' ? null : 'linkedin')}
         >
           <div className="rounded-md border border-border-input p-4">
-            <p className="mb-3 flex items-center gap-2 text-sm text-body">
-              <LinkedinIcon size={16} className="text-link" />
+            <p className="mb-3 text-sm text-body">
+              <LinkedinIcon size={16} className="mr-1.5 inline-block align-text-bottom text-link" />
               Find your target audience with{' '}
               <a className="text-link underline">LinkedIn Search</a> or <a className="text-link underline">Sales Navigator</a> or{' '}
               <a className="text-link underline">Post URL</a> or <a className="text-link underline">Group URL</a>
