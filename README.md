@@ -38,6 +38,20 @@ src/
   mock/              # static mock data
 ```
 
+## Deployment
+
+The app is a static SPA (`npm run build` → `dist/`) and deploys as-is to Vercel or Netlify. Both `vercel.json` and `netlify.toml` are included so client-side routes (e.g. `/campaign/new`) resolve correctly on refresh/direct link instead of 404ing:
+
+```bash
+# Vercel
+npx vercel --prod
+
+# Netlify
+npx netlify deploy --prod --dir=dist
+```
+
+Or connect the GitHub repo directly in the Vercel/Netlify dashboard (framework preset: Vite) for auto-deploys on push.
+
 ## Notes / Assumptions
 
 - The Figma file did not include a dedicated "Sender Profiles" step screen — it's implemented as a reasonable extension of the existing design system (connected LinkedIn/Email account selector).
