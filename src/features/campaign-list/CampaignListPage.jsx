@@ -94,7 +94,7 @@ export default function CampaignListPage() {
           <thead>
             <tr className="border-b border-[#EBE9F1] text-xs uppercase text-muted">
               <th className="w-10 p-4">
-                <input type="checkbox" className="size-4 accent-link" />
+                <input type="checkbox" className="size-5 rounded-md border-border-input accent-link" />
               </th>
               <th className="p-4 font-medium">All Campaigns</th>
               <th className="p-4 font-medium">CRM</th>
@@ -111,23 +111,23 @@ export default function CampaignListPage() {
             {filtered.map((c) => (
               <tr key={c.id} className="border-b border-[#EBE9F1] last:border-0 hover:bg-gray-50">
                 <td className="p-4">
-                  <input type="checkbox" className="size-4 accent-link" />
+                  <input type="checkbox" className="size-5 rounded-md border-border-input accent-link" />
                 </td>
                 <td className="p-4">
-                  <p className="flex items-center gap-2 font-medium text-dark">
+                  <p className="flex items-center gap-2.5 text-sm font-semibold text-text-secondary">
                     {c.name}
                     {c.channels.map((channel) => (
                       <span
                         key={channel}
-                        className={`rounded-full px-2 py-0.5 text-xs font-medium ${
-                          channel === 'LinkedIn' ? 'bg-link/10 text-link' : 'bg-gray-100 text-muted'
+                        className={`rounded px-1 py-0.5 text-xs font-medium ${
+                          channel === 'LinkedIn' ? 'bg-[#EDF2FC] text-link' : 'bg-gray-100 text-text-secondary'
                         }`}
                       >
                         {channel}
                       </span>
                     ))}
                   </p>
-                  <p className="text-xs text-muted">Created On: 21 Jan, 2026</p>
+                  <p className="mt-1 text-sm text-muted">Created On: 21 Jan, 2026</p>
                 </td>
                 <td className="p-4">
                   {c.crm === 'synced' ? (
