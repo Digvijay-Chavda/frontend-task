@@ -12,9 +12,8 @@ export default function Sidebar({ open, onClose }) {
     <>
       {open && <div className="fixed inset-0 z-30 bg-black/40 lg:hidden" onClick={onClose} />}
       <aside
-        className={`fixed inset-y-0 left-0 z-40 flex w-[260px] shrink-0 flex-col bg-white transition-transform lg:static lg:translate-x-0 ${
-          open ? 'translate-x-0' : '-translate-x-full'
-        }`}
+        className={`fixed inset-y-0 left-0 z-40 flex w-[260px] shrink-0 flex-col bg-white transition-transform lg:static lg:translate-x-0 ${open ? 'translate-x-0' : '-translate-x-full'
+          }`}
       >
         <div className="flex items-center justify-between px-6 py-6">
           <div className="flex items-center gap-2">
@@ -35,8 +34,7 @@ export default function Sidebar({ open, onClose }) {
               to={item.to}
               onClick={onClose}
               className={({ isActive }) =>
-                `flex items-center gap-2.5 rounded-sm px-4 py-2.5 text-[15px] font-medium transition ${
-                  isActive ? 'bg-primary-gradient text-white' : 'text-text-secondary hover:bg-gray-100'
+                `flex items-center gap-2.5 rounded-sm px-4 py-2.5 text-[15px] font-medium transition ${isActive ? 'bg-primary-gradient text-white' : 'text-text-secondary hover:bg-gray-100'
                 }`
               }
             >
@@ -46,33 +44,40 @@ export default function Sidebar({ open, onClose }) {
           ))}
         </nav>
 
-        <div className="mx-3 mb-4 flex items-center justify-center rounded-sm bg-sidebar-card p-1">
+        <div className="mx-3 mb-3 rounded-lg bg-sidebar-card p-3">
+          <div className="flex items-center gap-3">
+            <span className="relative shrink-0">
+              <img src={avatarPhoto} alt="John Doe" className="size-[46px] rounded-full object-cover" />
+              <span className="absolute bottom-0 right-0 size-2.5 rounded-full border-2 border-sidebar-card bg-success" />
+            </span>
+            <div className="min-w-0 flex-1">
+              <p className="truncate text-sm text-dark">John Doe</p>
+              <p className="truncate text-xs text-muted">Admin</p>
+            </div>
+            <button aria-label="Log out" className="shrink-0 rounded-sm bg-logout-bg p-1.5 text-text-secondary hover:opacity-80">
+              <LogOut size={18} />
+            </button>
+          </div>
+          <div className="mt-3 border-white pt-3">
+            <p className="text-xs text-muted">Email</p>
+            <p className="truncate text-sm text-dark">johndoe@gmail.com</p>
+          </div>
+        </div>
+
+        <div className="mx-3 mb-6 flex items-center justify-center rounded-full bg-sidebar-card p-1">
           <button
             onClick={() => setTheme('light')}
-            className={`flex w-1/2 items-center justify-center gap-2 rounded-[64px] px-4 py-2.5 text-sm font-medium ${
-              theme === 'light' ? 'bg-white text-[#443f58]' : 'text-[#656178]'
-            }`}
+            className={`flex w-1/2 items-center justify-center gap-2 rounded-[64px] px-4 py-2.5 text-sm font-medium ${theme === 'light' ? 'bg-white text-[#443f58]' : 'text-[#656178]'
+              }`}
           >
             <Sun size={18} /> Light
           </button>
           <button
             onClick={() => setTheme('dark')}
-            className={`flex w-1/2 items-center justify-center gap-2 rounded-sm px-4 py-2.5 text-sm font-medium ${
-              theme === 'dark' ? 'bg-white text-[#443f58]' : 'text-[#656178]'
-            }`}
+            className={`flex w-1/2 items-center justify-center gap-2 rounded-sm px-4 py-2.5 text-sm font-medium ${theme === 'dark' ? 'bg-white text-[#443f58]' : 'text-[#656178]'
+              }`}
           >
             <Moon size={18} /> Dark
-          </button>
-        </div>
-
-        <div className="mx-3 mb-6 flex items-center gap-3 rounded-lg bg-sidebar-card p-3">
-          <img src={avatarPhoto} alt="John Doe" className="size-[46px] shrink-0 rounded-full object-cover" />
-          <div className="min-w-0 flex-1">
-            <p className="truncate text-sm text-dark">John Doe</p>
-            <p className="truncate text-xs text-muted">Admin</p>
-          </div>
-          <button aria-label="Log out" className="shrink-0 rounded-sm bg-logout-bg p-1.5 text-text-secondary hover:opacity-80">
-            <LogOut size={18} />
           </button>
         </div>
       </aside>
