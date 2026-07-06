@@ -1,31 +1,9 @@
 import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
-import {
-  LayoutDashboard,
-  Megaphone,
-  UserSearch,
-  UserCog,
-  Database,
-  Video,
-  Share2,
-  Settings,
-  Sun,
-  Moon,
-  LogOut,
-  PanelRightClose,
-} from 'lucide-react'
+import { Megaphone, Sun, Moon, LogOut, PanelRightClose } from 'lucide-react'
 import avatarPhoto from '../../assets/avatar-photo.png'
 
-const NAV_ITEMS = [
-  { key: 'dashboards', label: 'Dashboards', icon: LayoutDashboard, to: '#' },
-  { key: 'campaign', label: 'Campaign', icon: Megaphone, to: '/campaign' },
-  { key: 'lookalike', label: 'Lookalike Search', icon: UserSearch, to: '#' },
-  { key: 'sender', label: 'Sender Profile', icon: UserCog, to: '#' },
-  { key: 'prospect', label: 'Prospect Data', icon: Database, to: '#' },
-  { key: 'video', label: 'Video', icon: Video, to: '#' },
-  { key: 'integrations', label: 'Integrations', icon: Share2, to: '#' },
-  { key: 'settings', label: 'Settings', icon: Settings, to: '#' },
-]
+const NAV_ITEMS = [{ key: 'campaign', label: 'Campaign', icon: Megaphone, to: '/campaign' }]
 
 export default function Sidebar({ open, onClose }) {
   const [theme, setTheme] = useState('light')
@@ -51,32 +29,21 @@ export default function Sidebar({ open, onClose }) {
         </div>
 
         <nav className="flex flex-1 flex-col gap-1 overflow-y-auto px-3">
-          {NAV_ITEMS.map((item) =>
-            item.to === '#' ? (
-              <button
-                key={item.key}
-                type="button"
-                className="flex items-center gap-2.5 rounded-sm px-4 py-2.5 text-left text-[15px] font-medium text-text-secondary transition hover:bg-gray-100"
-              >
-                <item.icon size={18} />
-                {item.label}
-              </button>
-            ) : (
-              <NavLink
-                key={item.key}
-                to={item.to}
-                onClick={onClose}
-                className={({ isActive }) =>
-                  `flex items-center gap-2.5 rounded-sm px-4 py-2.5 text-[15px] font-medium transition ${
-                    isActive ? 'bg-primary-gradient text-white' : 'text-text-secondary hover:bg-gray-100'
-                  }`
-                }
-              >
-                <item.icon size={18} />
-                {item.label}
-              </NavLink>
-            ),
-          )}
+          {NAV_ITEMS.map((item) => (
+            <NavLink
+              key={item.key}
+              to={item.to}
+              onClick={onClose}
+              className={({ isActive }) =>
+                `flex items-center gap-2.5 rounded-sm px-4 py-2.5 text-[15px] font-medium transition ${
+                  isActive ? 'bg-primary-gradient text-white' : 'text-text-secondary hover:bg-gray-100'
+                }`
+              }
+            >
+              <item.icon size={18} />
+              {item.label}
+            </NavLink>
+          ))}
         </nav>
 
         <div className="mx-3 mb-4 flex items-center justify-center rounded-sm bg-sidebar-card p-1">
