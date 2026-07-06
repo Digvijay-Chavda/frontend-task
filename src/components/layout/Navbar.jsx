@@ -8,11 +8,13 @@ export default function Navbar({ breadcrumb = ['Campaign'], onMenuClick }) {
         <button onClick={onMenuClick} className="text-text-secondary lg:hidden" aria-label="Open sidebar">
           <Menu size={22} />
         </button>
-        <div className="flex items-center gap-2 text-sm font-normal leading-[1.2] tracking-normal">
+        <div className="flex items-center gap-2 text-[20px] font-normal leading-[1.2] tracking-normal">
           {breadcrumb.map((crumb, i) => (
             <span key={crumb} className="flex items-center gap-2">
               {i > 0 && <ChevronRight size={14} className="text-muted" />}
-              <span className={i === breadcrumb.length - 1 ? 'text-body' : 'text-link'}>{crumb}</span>
+              <span className={i === breadcrumb.length - 1 && breadcrumb.length > 1 ? 'text-body' : 'text-link'}>
+                {crumb}
+              </span>
             </span>
           ))}
         </div>
