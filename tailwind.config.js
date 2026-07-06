@@ -29,7 +29,7 @@ export default {
       borderRadius: {
         sm: '4px',
         md: '6px',
-        lg: '8px',
+        lg: '12px',
       },
       boxShadow: {
         navbar: '0px 4px 24px 0px rgba(0,0,0,0.12)',
