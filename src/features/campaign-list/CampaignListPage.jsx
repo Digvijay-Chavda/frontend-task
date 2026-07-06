@@ -1,7 +1,6 @@
 import { useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Search, Download, MoreVertical, Mail, Sparkles, RefreshCcw } from 'lucide-react'
-import LinkedinIcon from '../../components/icons/LinkedinIcon'
+import { Search, Download, MoreVertical, Sparkles, RefreshCcw } from 'lucide-react'
 import Select from '../../components/ui/Select'
 import Input from '../../components/ui/Input'
 import Button from '../../components/ui/Button'
@@ -91,7 +90,7 @@ export default function CampaignListPage() {
       </div>
 
       <div className="overflow-x-auto rounded-lg border border-[#EBE9F1] bg-white">
-        <table className="w-full min-w-[900px] text-left text-sm">
+        <table className="w-full min-w-[1050px] text-left text-sm">
           <thead>
             <tr className="border-b border-[#EBE9F1] text-xs uppercase text-muted">
               <th className="w-10 p-4">
@@ -104,6 +103,7 @@ export default function CampaignListPage() {
               <th className="p-4 font-medium">Email Sent</th>
               <th className="p-4 font-medium">Sender</th>
               <th className="p-4 font-medium">Status</th>
+              <th className="p-4 font-medium">Daily Limit</th>
               <th className="w-10 p-4" />
             </tr>
           </thead>
@@ -116,8 +116,16 @@ export default function CampaignListPage() {
                 <td className="p-4">
                   <p className="flex items-center gap-2 font-medium text-dark">
                     {c.name}
-                    <LinkedinIcon size={14} className="text-link" />
-                    <Mail size={14} className="text-muted" />
+                    {c.channels.map((channel) => (
+                      <span
+                        key={channel}
+                        className={`rounded-full px-2 py-0.5 text-xs font-medium ${
+                          channel === 'LinkedIn' ? 'bg-link/10 text-link' : 'bg-gray-100 text-muted'
+                        }`}
+                      >
+                        {channel}
+                      </span>
+                    ))}
                   </p>
                   <p className="text-xs text-muted">Created On: 21 Jan, 2026</p>
                 </td>
@@ -154,11 +162,15 @@ export default function CampaignListPage() {
                 <td className="p-4">
                   <button
                     onClick={() => navigate(`/campaign/${c.id}/stats`)}
-                    className="mb-1 block rounded-full bg-success-bg px-2.5 py-1 text-xs font-medium text-success"
+                    className="block rounded-full bg-success-bg px-2.5 py-1 text-xs font-medium text-success"
                   >
                     ⏸ Running
                   </button>
-                  <p className="text-xs text-muted">{c.dailyLimit} invites/day</p>
+                </td>
+                <td className="p-4">
+                  <span className="block w-fit rounded-md border border-border-input px-3 py-1.5 text-xs text-muted">
+                    {c.dailyLimit} invites/day
+                  </span>
                 </td>
                 <td className="relative p-4">
                   <button onClick={() => setOpenMenuId(openMenuId === c.id ? null : c.id)} className="text-muted">
