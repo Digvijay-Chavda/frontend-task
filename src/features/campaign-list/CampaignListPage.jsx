@@ -92,18 +92,18 @@ export default function CampaignListPage() {
       <div className="overflow-x-auto rounded-lg border border-[#EBE9F1] bg-white">
         <table className="w-full min-w-[1050px] text-left text-sm">
           <thead>
-            <tr className="border-b border-[#EBE9F1] text-xs uppercase text-muted">
+            <tr className="border-b border-[#EBE9F1] bg-[#F3F2F7] text-[12px] font-semibold uppercase tracking-[1px] text-text-secondary">
               <th className="w-10 p-4">
                 <input type="checkbox" className="size-5 rounded-md border-border-input accent-link" />
               </th>
-              <th className="p-4 font-medium">All Campaigns</th>
-              <th className="p-4 font-medium">CRM</th>
-              <th className="p-4 font-medium">Invites Sent</th>
-              <th className="p-4 font-medium">Reply Rate</th>
-              <th className="p-4 font-medium">Email Sent</th>
-              <th className="p-4 font-medium">Sender</th>
-              <th className="p-4 font-medium">Status</th>
-              <th className="p-4 font-medium">Daily Limit</th>
+              <th className="p-4">All Campaigns</th>
+              <th className="p-4">CRM</th>
+              <th className="p-4">Invites Sent</th>
+              <th className="p-4">Reply Rate</th>
+              <th className="p-4">Email Sent</th>
+              <th className="p-4">Sender</th>
+              <th className="p-4">Status</th>
+              <th className="p-4">Daily Limit</th>
               <th className="w-10 p-4" />
             </tr>
           </thead>
