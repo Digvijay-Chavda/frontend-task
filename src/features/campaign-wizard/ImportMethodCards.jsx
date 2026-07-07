@@ -1,29 +1,31 @@
-import { CalendarDays, Users, Webhook, Check } from 'lucide-react'
-import LinkedinIcon from '../../components/icons/LinkedinIcon'
+import { Check } from 'lucide-react'
+import linkedinIcon from '../../assets/linkedin-01.png'
+import calendarIcon from '../../assets/calendar-04.png'
+import userListIcon from '../../assets/user-list.png'
 
 const METHODS = [
   {
     id: 'linkedin',
-    icon: LinkedinIcon,
+    icon: linkedinIcon,
     title: ['LinkedIn', 'Search'],
     desc: '(Basic, Sales Nav, Post, Group or Event URL)',
   },
   {
     id: 'csv',
-    icon: CalendarDays,
+    icon: calendarIcon,
     title: ['Upload', 'CSV File'],
     desc: 'Upload LinkedIn profiles via CSV.',
     link: 'Download Sample',
   },
   {
     id: 'lookalike',
-    icon: Users,
+    icon: userListIcon,
     title: ['Lookalike', 'Audience'],
     desc: 'Use Lead Finder to find audience.',
   },
   {
     id: 'webhook',
-    icon: Webhook,
+    icon: linkedinIcon,
     title: ['Inbound', 'Webhook'],
     desc: 'Sync leads from zapier, n8n make in real time',
   },
@@ -48,7 +50,7 @@ export default function ImportMethodCards({ selected, onSelect }) {
                 <Check size={11} strokeWidth={3} />
               </span>
             )}
-            <method.icon size={18} className="text-link" />
+            <img src={method.icon} alt="" className="size-[18px] object-contain" />
             <p className="mt-4 text-sm font-semibold text-text-secondary">
               {method.title[0]} {method.title[1]}
             </p>

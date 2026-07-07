@@ -21,11 +21,16 @@ export default function Navbar({ breadcrumb = ['Campaign'], onMenuClick }) {
       </div>
 
       <div className="flex items-center gap-3">
-        <img src={avatarPhoto} alt="John Doe" className="size-[38px] rounded-full object-cover" />
         <div className="hidden text-right sm:block">
           <p className="text-sm text-body">John Doe</p>
           <p className="text-xs text-muted-light">Admin</p>
         </div>
+        <span className="relative shrink-0">
+          <span className="flex size-[38px] items-center justify-center rounded-full bg-primary/40">
+            <img src={avatarPhoto} alt="John Doe" className="size-[34px] rounded-full object-cover" />
+          </span>
+          <span className="absolute bottom-0 right-0 size-3 rounded-full border-2 border-white bg-success" />
+        </span>
       </div>
     </header>
   )

@@ -44,9 +44,8 @@ export default function WorkflowModeModal({ open, onClose, onNext }) {
         {OPTIONS.map((opt) => (
           <label
             key={opt.id}
-            className={`flex cursor-pointer items-start justify-between gap-4 rounded-md border p-4 ${
-              selected === opt.id ? 'border-link bg-[#F5F8FF]' : 'border-border-input'
-            }`}
+            className={`flex cursor-pointer items-start justify-between gap-4 rounded-md border p-4 ${selected === opt.id ? 'border-link bg-[#F5F8FF]' : 'border-border-input'
+              }`}
           >
             <div className="flex items-start gap-3">
               <input
@@ -65,7 +64,7 @@ export default function WorkflowModeModal({ open, onClose, onNext }) {
                 <ul className="mt-2 flex flex-wrap gap-3 text-xs text-muted">
                   {opt.points.map((p) => (
                     <li key={p} className="flex items-center gap-1">
-                      <span className="size-1 rounded-full bg-muted" /> {p}
+                      <span className="size-2 rounded-full bg-[#b1b1b1]" /> {p}
                     </li>
                   ))}
                 </ul>

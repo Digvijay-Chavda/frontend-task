@@ -5,6 +5,7 @@ export default function ProgressStepper({ steps, activeIndex, onStepClick }) {
     <div className="flex flex-wrap items-center gap-3 rounded-md border border-[#EBE9F1] px-4 py-3 sm:gap-6 sm:px-6">
       {steps.map((step, index) => {
         const isActive = index === activeIndex
+        const isDone = index < activeIndex
         const Icon = step.icon
         const clickable = index <= activeIndex
         return (
@@ -17,12 +18,16 @@ export default function ProgressStepper({ steps, activeIndex, onStepClick }) {
             >
               <span
                 className={`flex size-[38px] shrink-0 items-center justify-center rounded-[5px] ${
-                  isActive ? 'bg-link text-white' : 'bg-[#E8E8E8] text-text-secondary'
+                  isActive
+                    ? 'bg-link text-white'
+                    : isDone
+                      ? 'bg-[#D0DCFF] text-link'
+                      : 'bg-[#E8E8E8] text-text-secondary'
                 }`}
               >
                 <Icon size={18} />
               </span>
-              <span className={`hidden text-[15px] font-medium sm:inline ${isActive ? 'text-[#444050]' : 'text-text-secondary'}`}>
+              <span className={`hidden text-[15px] font-medium sm:inline ${index <= activeIndex ? 'text-[#444050]' : 'text-text-secondary'}`}>
                 {step.label}
               </span>
             </button>

@@ -1,3 +1,8 @@
+import group91 from '../assets/Group 91.png'
+import group92 from '../assets/Group 92.png'
+import group93 from '../assets/Group 93.png'
+import group94 from '../assets/Group 94.png'
+
 export const campaignOverview = [
   { label: 'New Leads', value: 1628, sub: null, color: '#7367F0' },
   { label: 'Invites Sent', value: 988, sub: '61%', color: '#B9C2D0' },
@@ -31,13 +36,13 @@ export const replyPerformance = [
   { label: 'Follow-up', value: 80, color: '#7367F0' },
   { label: 'InMail', value: 32, color: '#28C76F' },
   { label: 'Email', value: 11, color: '#EA5455' },
-  { label: 'Connection Message', value: 79, color: '#7367F0' },
+  { label: 'Connection Message', value: 79, color: '#3666EE' },
 ]
 
 export const recentActivity = [
-  { time: '09:14 AM', title: 'Campaign started', by: 'Aman S.', color: '#7367F0' },
-  { time: '10:30 AM', title: 'Reply received', by: 'Suresh K.', color: '#7367F0' },
-  { time: '10:35 AM', title: 'Follow-up message sent', by: 'System', color: '#EA5455' },
-  { time: '10:35 AM', title: 'Connection accepted', by: 'Suresh K. (Prospect)', color: '#28C76F' },
-  { time: '10:45 AM', title: 'Campaign paused', by: 'Aman S.', color: '#FF9F43' },
+  { time: '09:14 AM', title: 'Campaign started', prefix: 'by', name: 'Aman S.', linked: true, icon: group91 },
+  { time: '10:30 AM', title: 'Reply received', prefix: 'from', name: 'Suresh K.', linked: true, icon: group92 },
+  { time: '10:35 AM', title: 'Follow-up message sent', prefix: 'by', name: 'System', linked: false, icon: group93 },
+  { time: '10:35 AM', title: 'Connection accepted', prefix: 'by', name: 'Suresh K.', nameSuffix: '(Prospect)', linked: true, icon: null },
+  { time: '10:45 AM', title: 'Campaign paused', prefix: 'by', name: 'Aman S.', linked: true, icon: group94 },
 ]

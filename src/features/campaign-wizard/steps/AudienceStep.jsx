@@ -188,7 +188,6 @@ export default function AudienceStep({ onValidChange }) {
 
       <LookalikeModal
         open={lookalikeOpen}
-        hasLeads
         onClose={() => setLookalikeOpen(false)}
         onSelect={(ids) => {
           update({ selectedLookalikeIds: ids })

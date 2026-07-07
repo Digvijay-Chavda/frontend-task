@@ -1,9 +1,9 @@
 const RADIUS = 100
-const BAR_LENGTH_FILLED = 40
-const BAR_LENGTH_EMPTY = 26
+const BAR_LENGTH_FILLED = 32
+const BAR_LENGTH_EMPTY = 32
 
 export default function ReplyAnalysisGauge({ percent, label, breakdown }) {
-  const bars = 36
+  const bars = 20
   const filledBars = Math.round((percent / 100) * bars)
 
   return (
@@ -15,9 +15,8 @@ export default function ReplyAnalysisGauge({ percent, label, breakdown }) {
           return (
             <span
               key={i}
-              className={`absolute bottom-0 left-1/2 w-[5px] origin-bottom rounded-full ${
-                isFilled ? 'bg-primary' : 'bg-gray-200'
-              }`}
+              className={`absolute bottom-0 left-1/2 w-[9px] origin-bottom rounded-full ${isFilled ? 'bg-primary-gradient' : 'bg-gray-200'
+                }`}
               style={{
                 transform: `rotate(${angle}deg) translateY(-${RADIUS}px)`,
                 height: isFilled ? `${BAR_LENGTH_FILLED}px` : `${BAR_LENGTH_EMPTY}px`,

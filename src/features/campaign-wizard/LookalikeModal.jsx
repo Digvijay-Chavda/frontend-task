@@ -1,11 +1,20 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { ListChecks } from 'lucide-react'
 import Modal from '../../components/ui/Modal'
 import Button from '../../components/ui/Button'
 import { lookalikeLists } from '../../mock/campaigns'
 
-export default function LookalikeModal({ open, onClose, onSelect, hasLeads = true }) {
+export default function LookalikeModal({ open, onClose, onSelect }) {
+  const [view, setView] = useState('empty')
   const [checked, setChecked] = useState(new Set())
+
+  // Every time the modal opens, start from the "no leads" empty state.
+  useEffect(() => {
+    if (open) {
+      setView('empty')
+      setChecked(new Set())
+    }
+  }, [open])
 
   const toggle = (id) => {
     setChecked((prev) => {
@@ -26,7 +35,7 @@ export default function LookalikeModal({ open, onClose, onSelect, hasLeads = tru
       title="Lookalikes"
       subtitle="Select a lookalike list for this campaign"
       footer={
-        hasLeads ? (
+        view === 'list' ? (
           <>
             <Button variant="outline" onClick={onClose}>
               Cancel
@@ -38,14 +47,13 @@ export default function LookalikeModal({ open, onClose, onSelect, hasLeads = tru
         ) : null
       }
     >
-      {hasLeads ? (
+      {view === 'list' ? (
         <div className="flex flex-col gap-3">
           {lookalikeLists.map((list) => (
             <label
               key={list.id}
-              className={`flex cursor-pointer items-center justify-between rounded-md border p-4 ${
-                checked.has(list.id) ? 'border-link' : 'border-border-input'
-              }`}
+              className={`flex cursor-pointer items-center justify-between rounded-md border p-4 ${checked.has(list.id) ? 'border-link' : 'border-border-input'
+                }`}
             >
               <span className="flex items-center gap-2 text-sm font-medium text-dark">
                 <ListChecks size={16} className="text-link" />
@@ -67,7 +75,7 @@ export default function LookalikeModal({ open, onClose, onSelect, hasLeads = tru
         <div className="flex flex-col items-center gap-3 py-10 text-center">
           <h3 className="text-lg font-medium text-dark">You don't have any leads</h3>
           <p className="text-sm text-body">Create a lead list to start running campaigns</p>
-          <Button className="mt-2" onClick={onClose}>
+          <Button className="mt-2" onClick={() => setView('list')}>
             Create a List
           </Button>
         </div>

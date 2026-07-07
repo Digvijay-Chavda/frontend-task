@@ -1,13 +1,13 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { ClipboardList, UserCog, Settings as SettingsIcon, LayoutDashboard } from 'lucide-react'
+import { ClipboardList, UserCog, Settings as SettingsIcon, LayoutDashboard, Undo2 } from 'lucide-react'
 import ProgressStepper from '../../components/ui/ProgressStepper'
 import Button from '../../components/ui/Button'
 import { WizardProvider } from './WizardContext'
 import AudienceStep from './steps/AudienceStep'
 import SenderProfilesStep from './steps/SenderProfilesStep'
 import SettingsStep from './steps/SettingsStep'
-import StatsPage from '../stats/StatsPage'
+import StatsStep from './steps/StatsStep'
 
 const STEPS = [
   { key: 'audience', label: 'Define Target Audience', icon: ClipboardList },
@@ -43,19 +43,21 @@ function WizardBody() {
           {activeStep === 0 && <AudienceStep onValidChange={setStepValid} />}
           {activeStep === 1 && <SenderProfilesStep onValidChange={setStepValid} />}
           {activeStep === 2 && <SettingsStep onValidChange={setStepValid} />}
-          {activeStep === 3 && <StatsPage campaignName="New Outreach Campaign" embedded />}
+          {activeStep === 3 && <StatsStep campaignName="New Outreach Campaign" />}
         </div>
 
-        <div className={`flex ${activeStep === 0 ? 'justify-end' : 'justify-between'}`}>
-          {activeStep > 0 && (
-            <Button variant="outline" onClick={goPrevious}>
-              Previous
+        {activeStep < 3 && (
+          <div className="flex items-center justify-end gap-3">
+            {activeStep > 0 && (
+              <Button variant="ghost" onClick={goPrevious} className="text-link">
+                <Undo2 size={16} /> Previous
+              </Button>
+            )}
+            <Button onClick={goNext} disabled={!stepValid} className={!stepValid ? 'opacity-65' : ''}>
+              Next
             </Button>
-          )}
-          <Button onClick={goNext} disabled={activeStep < 3 && !stepValid} className={activeStep < 3 && !stepValid ? 'opacity-65' : ''}>
-            {activeStep === STEPS.length - 1 ? 'Finish' : 'Next'}
-          </Button>
-        </div>
+          </div>
+        )}
       </div>
     </div>
   )

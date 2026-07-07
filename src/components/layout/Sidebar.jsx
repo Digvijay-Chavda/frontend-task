@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { Megaphone, Sun, Moon, LogOut, PanelRightClose } from 'lucide-react'
 import avatarPhoto from '../../assets/avatar-photo.png'
+import logoIcon from '../../assets/Isolation_Mode.png'
 
 const NAV_ITEMS = [{ key: 'campaign', label: 'Campaign', icon: Megaphone, to: '/campaign' }]
 
@@ -17,9 +18,7 @@ export default function Sidebar({ open, onClose }) {
       >
         <div className="flex items-center justify-between px-6 py-6">
           <div className="flex items-center gap-2">
-            <span className="flex size-7 items-center justify-center rounded-md bg-primary-gradient text-white">
-              <Megaphone size={16} />
-            </span>
+            <img src={logoIcon} alt="" className="size-[25px] object-contain" />
             <span className="font-heading text-[17px] font-bold text-[#00002B]">Frontend Task</span>
           </div>
           <button onClick={onClose} className="text-muted lg:hidden" aria-label="Close sidebar">
@@ -47,7 +46,9 @@ export default function Sidebar({ open, onClose }) {
         <div className="mx-3 mb-3 rounded-lg bg-sidebar-card p-3">
           <div className="flex items-center gap-3">
             <span className="relative shrink-0">
-              <img src={avatarPhoto} alt="John Doe" className="size-[46px] rounded-full object-cover" />
+              <span className="flex size-[46px] items-center justify-center rounded-full bg-primary/40">
+                <img src={avatarPhoto} alt="John Doe" className="size-[42px] rounded-full object-cover" />
+              </span>
               <span className="absolute bottom-0 right-0 size-2.5 rounded-full border-2 border-sidebar-card bg-success" />
             </span>
             <div className="min-w-0 flex-1">

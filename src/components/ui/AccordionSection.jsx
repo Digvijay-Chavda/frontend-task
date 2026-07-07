@@ -2,9 +2,9 @@ import { ChevronUp, ChevronDown, Check } from 'lucide-react'
 
 export default function AccordionSection({ title, badge, status = 'pending', open, onToggle, children }) {
   return (
-    <div className="relative mb-4 pl-6">
+    <div className="relative mb-4 pl-6 after:absolute after:left-[6px] after:top-[18px] after:h-[calc(100%+1rem)] after:w-px after:bg-[#E7EDF6] after:content-[''] last:after:hidden">
       <span
-        className={`absolute left-0 top-[18px] flex size-3.5 items-center justify-center rounded-full ${
+        className={`absolute left-0 top-[18px] z-10 flex size-3.5 items-center justify-center rounded-full ${
           status === 'done'
             ? 'bg-success'
             : status === 'current'

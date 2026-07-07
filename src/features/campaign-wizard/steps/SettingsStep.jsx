@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { Bot, MessageSquare, Send, Info } from 'lucide-react'
+import { Bot, MessageSquare, Send, Info, Zap, Workflow, Webhook } from 'lucide-react'
 import Input from '../../../components/ui/Input'
 import Select from '../../../components/ui/Select'
 import Button from '../../../components/ui/Button'
@@ -50,7 +50,7 @@ export default function SettingsStep({ onValidChange }) {
 
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-[1.4fr_1fr]">
         <div className="rounded-md border border-[#EBE9F1] p-4">
-          <h4 className="text-sm font-semibold text-dark">Sending Window</h4>
+          <h4 className="text-md font-semibold text-dark">Sending Window</h4>
           <p className="mb-3 text-xs text-muted">Define when the campaign runs</p>
           <Select
             value={settings.timezone}
@@ -66,9 +66,8 @@ export default function SettingsStep({ onValidChange }) {
               <button
                 key={day}
                 onClick={() => toggleDay(day)}
-                className={`rounded-md border px-3 py-1.5 text-xs font-medium ${
-                  settings.days.includes(day) ? 'border-link bg-[#EAEFFF] text-link' : 'border-border-input text-muted'
-                }`}
+                className={`rounded-md border px-3 py-1.5 text-xs font-medium ${settings.days.includes(day) ? 'border-link bg-[#EAEFFF] text-link' : 'border-border-input text-muted'
+                  }`}
               >
                 {day}
               </button>
@@ -126,12 +125,12 @@ export default function SettingsStep({ onValidChange }) {
         </div>
       </div>
 
-      <div className="rounded-md border border-[#EBE9F1] p-4">
-        <label className="mb-3 flex items-center gap-2 text-sm font-medium text-dark">
+      <div className="overflow-hidden rounded-md border border-[#EBE9F1]">
+        <label className="flex h-[54px] items-center gap-2 bg-[#D0DCFF]/[0.27] px-4 text-sm font-medium text-dark">
           <input type="checkbox" checked readOnly className="size-4 accent-link" />
           Select events to trigger zapier <Info size={14} className="text-muted" />
         </label>
-        <div className="flex flex-wrap gap-4">
+        <div className="flex flex-wrap gap-x-8 gap-y-3 px-4 py-4">
           {ZAPIER_EVENTS.map((event) => (
             <label key={event} className="flex items-center gap-2 text-sm text-text-secondary">
               <input
@@ -144,16 +143,28 @@ export default function SettingsStep({ onValidChange }) {
             </label>
           ))}
         </div>
-        <div className="mt-4 flex items-center gap-3 border-t border-[#EBE9F1] pt-4 text-sm text-muted">
-          Works With
-          <span className="font-semibold text-warning">zapier</span>
-          <span className="font-semibold text-link">n8n</span>
-          <span className="font-semibold text-dark">make</span>
+        <div className="border-t border-[#EBE9F1]" />
+        <div className="px-4 py-4">
+          <div className="flex flex-wrap items-center gap-3 text-sm text-muted">
+            Works With
+            <span className="inline-flex items-center gap-1 rounded-md border border-[#EBE9F1] px-2.5 py-1">
+              <Zap size={13} className="text-[#FF4A00]" />
+              <span className="font-semibold text-[#FF4A00]">zapier</span>
+            </span>
+            <span className="inline-flex items-center gap-1 rounded-md border border-[#EBE9F1] px-2.5 py-1">
+              <Workflow size={13} className="text-[#EA4B71]" />
+              <span className="font-semibold text-dark">n8n</span>
+            </span>
+            <span className="inline-flex items-center gap-1 rounded-md border border-[#EBE9F1] px-2.5 py-1">
+              <Webhook size={13} className="text-text-secondary" />
+              <span className="font-semibold text-dark">webhooks</span>
+            </span>
+          </div>
+          <p className="mt-3 text-xs text-muted">
+            If a lead answers your invite, message, or InMail, we stop sending further steps automatically.{' '}
+            <a className="text-link underline">Learn more</a>
+          </p>
         </div>
-        <p className="mt-3 text-xs text-muted">
-          If a lead answers your invite, message, or InMail, we stop sending further steps automatically.{' '}
-          <a className="text-link underline">Learn more</a>
-        </p>
       </div>
     </div>
   )

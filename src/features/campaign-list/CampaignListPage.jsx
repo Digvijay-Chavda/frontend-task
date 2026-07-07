@@ -7,7 +7,7 @@ import Input from '../../components/ui/Input'
 import Button from '../../components/ui/Button'
 import WorkflowModeModal from '../campaign-wizard/WorkflowModeModal'
 import avatarPhoto from '../../assets/avatar-photo.png'
-import emptyIllustration from '../../assets/empty-campaigns.png'
+import emptyIllustration from '../../assets/Empty_Screen.png'
 import { campaigns as allCampaigns } from '../../mock/campaigns'
 
 export default function CampaignListPage() {
@@ -27,36 +27,34 @@ export default function CampaignListPage() {
 
   if (filtered.length === 0) {
     return (
-      <div className="rounded-lg bg-white p-[26px]">
-        <div className="flex flex-col gap-6">
-          <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-            <Select className="w-full sm:w-40" value={channel} onChange={(e) => setChannel(e.target.value)}>
-              <option value="all">All</option>
-              <option value="linkedin">LinkedIn</option>
-              <option value="email">Email</option>
-            </Select>
-            <div className="relative w-full sm:w-64">
-              <Search size={16} className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-muted" />
-              <Input
-                className="pl-9"
-                placeholder="Search"
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-              />
-            </div>
+      <div className="flex min-h-[calc(100vh-124px)] flex-col rounded-lg bg-white p-[26px]">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+          <Select className="w-full sm:w-40" value={channel} onChange={(e) => setChannel(e.target.value)}>
+            <option value="all">All</option>
+            <option value="linkedin">LinkedIn</option>
+            <option value="email">Email</option>
+          </Select>
+          <div className="relative w-full sm:w-64">
+            <Search size={16} className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-muted" />
+            <Input
+              className="pl-9"
+              placeholder="Search"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
           </div>
-
-          <div className="flex flex-col items-center justify-center gap-6 py-20">
-            <img src={emptyIllustration} alt="No campaigns found" className="w-48 sm:w-64" />
-            <Button onClick={startNewCampaign}>New Campaign</Button>
-          </div>
-
-          <WorkflowModeModal
-            open={modalOpen}
-            onClose={() => setModalOpen(false)}
-            onNext={() => navigate('/campaign/new')}
-          />
         </div>
+
+        <div className="flex flex-1 flex-col items-center justify-center gap-8 py-16">
+          <img src={emptyIllustration} alt="No campaigns found" className="w-[280px] max-w-full" />
+          <Button onClick={startNewCampaign}>New Campaign</Button>
+        </div>
+
+        <WorkflowModeModal
+          open={modalOpen}
+          onClose={() => setModalOpen(false)}
+          onNext={() => navigate('/campaign/new')}
+        />
       </div>
     )
   }

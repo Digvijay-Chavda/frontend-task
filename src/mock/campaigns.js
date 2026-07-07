@@ -1,4 +1,8 @@
-export const campaigns = [
+// Default view is the empty state (matches the Figma "Default Layout").
+// Move the sample rows from `sampleCampaigns` into `campaigns` to preview the table.
+export const campaigns = []
+
+export const sampleCampaigns = [
   {
     id: 'tech-founder-1',
     name: 'Tech Founder',
